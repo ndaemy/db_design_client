@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Employee from './components/Employee'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const employee = {
+  name: '가나다',
+  emp_no: '12345678',
+  ssn: '971212-1******',
+  final_edu: '명지대학교 컴퓨터공학과 학사',
+  enter_date: '2019. 10. 23',
 }
 
-export default App;
+export default () => {
+  return (
+    <Employee
+      name={employee.name}
+      emp_no={employee.emp_no}
+      ssn={employee.ssn}
+      final_edu={employee.final_edu}
+      enter_date={employee.enter_date}
+    />
+  )
+}
