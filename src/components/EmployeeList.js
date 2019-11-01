@@ -22,15 +22,17 @@ class EmployeeList extends Component {
           </TableRow>
         </TableHead>
         <TableBody>
-          {employeeList.map(e => (
-            <Employee
-              name={e.name}
-              emp_no={e.emp_no}
-              ssn={e.ssn}
-              final_edu={e.final_edu}
-              enter_date={e.enter_date}
-            />
-          ))}
+          {employeeList
+            ? employeeList.map(employee => (
+                <Employee
+                  name={employee.name}
+                  emp_no={employee.emp_no}
+                  ssn={employee.ssn}
+                  final_edu={employee.final_edu}
+                  enter_date={employee.enter_date}
+                />
+              ))
+            : ''}
         </TableBody>
       </Table>
     )
