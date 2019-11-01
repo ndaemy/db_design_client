@@ -5,6 +5,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  CircularProgress,
 } from '@material-ui/core'
 
 class EmployeeList extends Component {
@@ -22,17 +23,23 @@ class EmployeeList extends Component {
           </TableRow>
         </TableHead>
         <TableBody>
-          {employeeList
-            ? employeeList.map(employee => (
-                <Employee
-                  name={employee.name}
-                  emp_no={employee.emp_no}
-                  ssn={employee.ssn}
-                  final_edu={employee.final_edu}
-                  enter_date={employee.enter_date}
-                />
-              ))
-            : ''}
+          {employeeList ? (
+            employeeList.map(employee => (
+              <Employee
+                name={employee.name}
+                emp_no={employee.emp_no}
+                ssn={employee.ssn}
+                final_edu={employee.final_edu}
+                enter_date={employee.enter_date}
+              />
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan="6" align="center">
+                <CircularProgress />
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     )
