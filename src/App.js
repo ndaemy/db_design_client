@@ -1,27 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import EmployeeList from './components/EmployeeList'
+import Router from './components/Router'
 
-class App extends Component {
-  state = {
-    employees: '',
-  }
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ employees: res }))
-      .catch(err => console.log(err))
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/employees')
-    const body = await response.json()
-    return body
-  }
-
-  render() {
-    return <EmployeeList employeeList={this.state.employees} />
-  }
+const App = () => {
+  return <Router isLoggedIn={false} />
 }
 
 export default App
