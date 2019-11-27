@@ -1,9 +1,13 @@
 import React from 'react'
 
-import HeaderNav from '../components/HeaderNav'
+import Nav from '../components/Nav'
 
 const Dashboard = () => {
-  return <HeaderNav />
+  return (
+    <>
+      <Nav />
+    </>
+  )
 }
 
 export default Dashboard
