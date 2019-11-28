@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, TextInput } from 'carbon-components-react'
+import axios from 'axios'
 
 import {
   useInput,
@@ -14,9 +15,28 @@ export default () => {
   const password = useInputForPw('')
   const passwordConfirm = useInputForPwConfirm('')
 
+  const sendData = () => {
+    const url = `/api/employees/signup/${empNo.value}`
+    const formData = {
+      id: id.value,
+      password: password.value,
+    }
+
+    return axios({ method: 'PUT', url, data: formData })
+  }
+
+  const handleFormSubmit = e => {
+    e.preventDefault()
+    sendData().then(response => console.log(response.data))
+    // TODO: Upper line is not yet complete.
+  }
+
   return (
     <>
-      <Form style={{ width: '30vw', minWidth: '200px' }} onSubmit={}>
+      <Form
+        style={{ width: '30vw', minWidth: '200px' }}
+        onSubmit={handleFormSubmit}
+      >
         <TextInput
           labelText="Emp No."
           invalidText="Your employee Number must be 8 digit-number."
@@ -51,7 +71,9 @@ export default () => {
               : passwordConfirm.setInvalid(true)
           }}
         />
-        <Button style={{ marginTop: '2vh' }}>Sign Up</Button>
+        <Button style={{ marginTop: '2vh' }} type="submit">
+          Sign Up
+        </Button>
       </Form>
     </>
   )
