@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import Auth from '../routes/Auth/Auth'
+import Auth from '../routes/Auth'
 import Dashboard from '../routes/Dashboard'
 
 // if logged in

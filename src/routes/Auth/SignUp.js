@@ -6,7 +6,7 @@ import {
   useInputForEmpNo,
   useInputForPw,
   useInputForPwConfirm,
-} from '../../components/useInput'
+} from '../../hooks/useInput'
 
 export default () => {
   const empNo = useInputForEmpNo('')
@@ -16,7 +16,7 @@ export default () => {
 
   return (
     <>
-      <Form style={{ width: '30vw', minWidth: '200px' }}>
+      <Form style={{ width: '30vw', minWidth: '200px' }} onSubmit={}>
         <TextInput
           labelText="Emp No."
           invalidText="Your employee Number must be 8 digit-number."
@@ -51,7 +51,7 @@ export default () => {
               : passwordConfirm.setInvalid(true)
           }}
         />
-        <Button style={{ marginTop: '2vh' }}>Register</Button>
+        <Button style={{ marginTop: '2vh' }}>Sign Up</Button>
       </Form>
     </>
   )

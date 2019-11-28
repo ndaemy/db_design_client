@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, TextInput } from 'carbon-components-react'
 
-import { useInput, useInputForPw } from '../../components/useInput'
+import { useInput, useInputForPw } from '../../hooks/useInput'
 
 export default () => {
   const id = useInput('')
@@ -18,7 +18,7 @@ export default () => {
           invalidText="Your password must be at least 6 characters as well as contain at least one lowercase, and one number."
           {...password}
         />
-        <Button style={{ marginTop: '2vh' }}>Submit</Button>
+        <Button style={{ marginTop: '2vh' }}>Sign In</Button>
       </Form>
     </>
   )
