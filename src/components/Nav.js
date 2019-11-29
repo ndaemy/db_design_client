@@ -13,37 +13,57 @@ import {
   SkipToContent,
 } from 'carbon-components-react/lib/components/UIShell'
 
-const Nav = () => (
-  <div className="container">
-    <HeaderContainer
-      render={({ isSideNavExpanded, onClickSideNavExpand }) => (
-        <>
-          <Header aria-label="DD Management">
-            <SkipToContent />
-            <HeaderMenuButton
-              aria-label="Open menu"
-              onClick={onClickSideNavExpand}
-              isActive={isSideNavExpanded}
-            />
-            <HeaderName href="/" prefix="DD">
-              Management
-            </HeaderName>
-            <HeaderGlobalBar>
-              <HeaderGlobalAction aria-label="App Switcher" onClick={() => {}}>
-                <AppSwitcher20 />
-              </HeaderGlobalAction>
-            </HeaderGlobalBar>
-            <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
-              <SideNavItems>
-                <SideNavLink href="/">Dashboard</SideNavLink>
-                <SideNavLink href="/projects">Projects</SideNavLink>
-              </SideNavItems>
-            </SideNav>
-          </Header>
-        </>
-      )}
-    />
-  </div>
-)
+const Nav = ({ active }) => {
+  const dashboardProps = {
+    isActive: active === 'Dashboard',
+  }
+
+  const projectsProps = {
+    isActive: active === 'Projects' ? true : false,
+  }
+
+  return (
+    <div className="container">
+      <HeaderContainer
+        render={({ isSideNavExpanded, onClickSideNavExpand }) => (
+          <>
+            <Header aria-label="DD Management">
+              <SkipToContent />
+              <HeaderMenuButton
+                aria-label="Open menu"
+                onClick={onClickSideNavExpand}
+                isActive={isSideNavExpanded}
+              />
+              <HeaderName href="/" prefix="DD">
+                Management
+              </HeaderName>
+              <HeaderGlobalBar>
+                <HeaderGlobalAction
+                  aria-label="App Switcher"
+                  onClick={() => {}}
+                >
+                  <AppSwitcher20 />
+                </HeaderGlobalAction>
+              </HeaderGlobalBar>
+              <SideNav
+                aria-label="Side navigation"
+                expanded={isSideNavExpanded}
+              >
+                <SideNavItems>
+                  <SideNavLink href="/" {...dashboardProps}>
+                    Dashboard
+                  </SideNavLink>
+                  <SideNavLink href="/projects" {...projectsProps}>
+                    Projects
+                  </SideNavLink>
+                </SideNavItems>
+              </SideNav>
+            </Header>
+          </>
+        )}
+      />
+    </div>
+  )
+}
 
 export default Nav

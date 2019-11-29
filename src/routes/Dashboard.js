@@ -5,7 +5,7 @@ import Nav from '../components/Nav'
 const Dashboard = () => {
   return (
     <>
-      <Nav />
+      <Nav active="Dashboard" />
     </>
   )
 }

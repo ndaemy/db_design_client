@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 
 import Auth from '../routes/Auth'
 import Dashboard from '../routes/Dashboard'
+import Project from '../routes/Project'
 
 // if logged in
 const LoggedInRoutes = () => (
   <>
     <Route exact path="/" component={Dashboard} />
+    <Route exact path="/projects" component={Project} />
   </>
 )
 
