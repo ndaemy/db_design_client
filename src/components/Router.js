@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import Auth from '../routes/Auth'
 import Dashboard from '../routes/Dashboard'
+import Employee from '../routes/Employee'
 import Project from '../routes/Project'
 import NewProject from '../routes/NewProject'
 import Client from '../routes/Client'
@@ -13,6 +14,7 @@ import NewClient from '../routes/NewClient'
 const LoggedInRoutes = () => (
   <>
     <Route exact path="/" component={Dashboard} />
+    <Route exact path="/employees" component={Employee} />
     <Route exact path="/projects" component={Project} />
     <Route exact path="/projects/new" component={NewProject} />
     <Route exact path="/clients" component={Client} />

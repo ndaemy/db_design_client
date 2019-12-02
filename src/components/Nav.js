@@ -18,6 +18,10 @@ const Nav = ({ active }) => {
     isActive: active === 'Dashboard',
   }
 
+  const employeesProps = {
+    isActive: active === 'Employees',
+  }
+
   const projectsProps = {
     isActive: active === 'Projects',
   }
@@ -56,6 +60,9 @@ const Nav = ({ active }) => {
                 <SideNavItems>
                   <SideNavLink href="/" {...dashboardProps}>
                     Dashboard
+                  </SideNavLink>
+                  <SideNavLink href="/employees" {...employeesProps}>
+                    Employees
                   </SideNavLink>
                   <SideNavLink href="/projects" {...projectsProps}>
                     Projects
