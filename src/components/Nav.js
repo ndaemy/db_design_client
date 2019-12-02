@@ -22,6 +22,10 @@ const Nav = ({ active }) => {
     isActive: active === 'Projects',
   }
 
+  const clientsProps = {
+    isActive: active === 'Clients',
+  }
+
   return (
     <div className="container">
       <HeaderContainer
@@ -55,6 +59,9 @@ const Nav = ({ active }) => {
                   </SideNavLink>
                   <SideNavLink href="/projects" {...projectsProps}>
                     Projects
+                  </SideNavLink>
+                  <SideNavLink href="/clients" {...clientsProps}>
+                    Clients
                   </SideNavLink>
                 </SideNavItems>
               </SideNav>

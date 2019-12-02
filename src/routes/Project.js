@@ -5,7 +5,7 @@ import { Button, Loading } from 'carbon-components-react'
 import { Content } from 'carbon-components-react/lib/components/UIShell'
 
 import Nav from '../components/Nav'
-import Table from '../components/Table'
+import ProjectTable from '../components/ProjectTable'
 
 // FIXME: not responsive.
 const Wrapper = styled.p`
@@ -33,7 +33,7 @@ const StoryContent = () => {
         <div className="bx--offset-lg-3 bx--col-lg-13">
           <p style={{ margin: '5vh 0' }}>
             {data ? (
-              <Table data={data} />
+              <ProjectTable data={data} />
             ) : (
               <Wrapper>
                 <Loading className="loading" />
