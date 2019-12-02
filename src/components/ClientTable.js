@@ -27,6 +27,10 @@ const CustomTable = ({ data }) => {
       key: 'representative',
       header: 'Representative',
     },
+    {
+      key: 'handsel',
+      header: 'Handsel',
+    },
   ]
 
   data.map(v => (v['id'] = v.cli_id))
@@ -51,7 +55,9 @@ const CustomTable = ({ data }) => {
               {rows.map(row => (
                 <TableRow key={row.id}>
                   {row.cells.map(cell => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
+                    <TableCell key={cell.id}>
+                      {cell.value ? cell.value : '-'}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}

@@ -7,6 +7,7 @@ import Dashboard from '../routes/Dashboard'
 import Project from '../routes/Project'
 import NewProject from '../routes/NewProject'
 import Client from '../routes/Client'
+import NewClient from '../routes/NewClient'
 
 // if logged in
 const LoggedInRoutes = () => (
@@ -15,6 +16,7 @@ const LoggedInRoutes = () => (
     <Route exact path="/projects" component={Project} />
     <Route exact path="/projects/new" component={NewProject} />
     <Route exact path="/clients" component={Client} />
+    <Route exact path="/clients/new" component={NewClient} />
   </>
 )
 

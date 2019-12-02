@@ -40,7 +40,7 @@ const StoryContent = () => {
               </Wrapper>
             )}
           </p>
-          {/* <Button href="/clients/new">New Client</Button> */}
+          <Button href="/clients/new">New Client</Button>
         </div>
       </div>
     </div>
