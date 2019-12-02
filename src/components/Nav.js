@@ -19,7 +19,7 @@ const Nav = ({ active }) => {
   }
 
   const projectsProps = {
-    isActive: active === 'Projects' ? true : false,
+    isActive: active === 'Projects',
   }
 
   return (

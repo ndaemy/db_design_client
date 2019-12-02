@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { Loading } from 'carbon-components-react'
+import { Button, Loading } from 'carbon-components-react'
 import { Content } from 'carbon-components-react/lib/components/UIShell'
 
 import Nav from '../components/Nav'
@@ -22,7 +22,6 @@ const StoryContent = () => {
     axios
       .get('/api/projects')
       .then(res => {
-        console.log(res.data)
         setData(res.data)
       })
       .catch(err => console.log(err))
@@ -41,6 +40,7 @@ const StoryContent = () => {
               </Wrapper>
             )}
           </p>
+          <Button href="/projects/new">New Project</Button>
         </div>
       </div>
     </div>
