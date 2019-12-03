@@ -63,7 +63,26 @@ const useInputForPwConfirm = init => {
   return { value, invalid, setInvalid, onChange }
 }
 
+const useInputForSSN = init => {
+  const [value, setValue] = useState(init)
+  const [invalid, setInvalid] = useState(false)
+
+  const onChange = e => {
+    const {
+      target: { value },
+    } = e
+    setValue(value)
+  }
+
+  const onBlur = e => {
+    setInvalid(!/^\d{6}-\d{7}$/.test(value))
+  }
+
+  return { value, invalid, onChange, onBlur }
+}
+
 export { useInput }
 export { useInputForEmpNo }
 export { useInputForPw }
 export { useInputForPwConfirm }
+export { useInputForSSN }
