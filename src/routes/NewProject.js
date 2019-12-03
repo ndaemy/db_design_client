@@ -14,6 +14,7 @@ import { Content } from 'carbon-components-react/lib/components/UIShell'
 
 import Nav from '../components/Nav'
 import { useInput } from '../hooks/useInput'
+import DateFormat from '../utils/DateFormat'
 
 const StoryContent = () => {
   const [clientList, setClientList] = useState()
@@ -32,20 +33,12 @@ const StoryContent = () => {
       .catch(err => console.log(err))
   }, [])
 
-  const setDateFormat = originalDate => {
-    const year = originalDate.getFullYear()
-    const month = originalDate.getMonth()
-    const date = originalDate.getDate()
-
-    return `${year}-${month}-${date}`
-  }
-
   const sendData = () => {
     const url = '/api/projects'
     const formData = {
       proj_name: projName.value,
-      start_date: setDateFormat(startDate),
-      end_date: setDateFormat(endDate),
+      start_date: DateFormat(startDate, '-'),
+      end_date: DateFormat(endDate, '-'),
       cli_id: cliId,
     }
 
