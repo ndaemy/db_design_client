@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { DataTable } from 'carbon-components-react'
 const {
   TableContainer,
@@ -11,6 +12,9 @@ const {
 } = DataTable
 
 const CustomTable = ({ data }) => {
+  const [toDetail, setToDetail] = useState(false)
+  const [detailId, setDetailId] = useState()
+
   // We would have a headers array like the following
   const headers = [
     {
@@ -39,7 +43,9 @@ const CustomTable = ({ data }) => {
 
   data.map(v => (v['id'] = v.proj_no))
 
-  return (
+  return toDetail ? (
+    <Redirect to={`/projects/detail/${detailId}`} />
+  ) : (
     <DataTable
       rows={data}
       headers={headers}
@@ -57,7 +63,14 @@ const CustomTable = ({ data }) => {
             </TableHead>
             <TableBody>
               {rows.map(row => (
-                <TableRow key={row.id}>
+                <TableRow
+                  key={row.id}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    setDetailId(row.id)
+                    setToDetail(true)
+                  }}
+                >
                   {row.cells.map(cell => (
                     <TableCell key={cell.id}>{cell.value}</TableCell>
                   ))}

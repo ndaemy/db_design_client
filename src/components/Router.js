@@ -8,6 +8,7 @@ import Employee from '../routes/Employee'
 import NewEmployee from '../routes/NewEmployee'
 import Project from '../routes/Project'
 import NewProject from '../routes/NewProject'
+import ProjectDetail from '../routes/ProjectDetail'
 import Client from '../routes/Client'
 import NewClient from '../routes/NewClient'
 
@@ -19,6 +20,7 @@ const LoggedInRoutes = () => (
     <Route exact path="/employees/new" component={NewEmployee} />
     <Route exact path="/projects" component={Project} />
     <Route exact path="/projects/new" component={NewProject} />
+    <Route exact path="/projects/detail/:proj_no" component={ProjectDetail} />
     <Route exact path="/clients" component={Client} />
     <Route exact path="/clients/new" component={NewClient} />
   </>
