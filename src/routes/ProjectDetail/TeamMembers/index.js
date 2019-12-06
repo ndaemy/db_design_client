@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { Button, Loading } from 'carbon-components-react'
+import { Loading } from 'carbon-components-react'
 import { Content } from 'carbon-components-react/lib/components/UIShell'
 
-import Nav from '../../components/Nav'
-import Summary from './Summary'
+import Nav from '../../../components/Nav'
+import Member from './Member'
 
 // FIXME: not responsive.
 const Wrapper = styled.p`
@@ -20,13 +19,12 @@ const Wrapper = styled.p`
 const StoryContent = () => {
   const { proj_no } = useParams()
   const [data, setData] = useState()
-  const [toTeamMembers, setToMembers] = useState(false)
 
   useEffect(() => {
     axios
-      .get(`/api/projects/${proj_no}`)
+      .get(`/api/team_members/${proj_no}`)
       .then(res => {
-        setData(res.data[0])
+        setData(res.data)
       })
       .catch(err => console.log(err))
   }, [proj_no])
@@ -34,25 +32,20 @@ const StoryContent = () => {
   const content = (
     <div className="bx--grid">
       <div className="bx--row">
-        <div className="bx--offset-lg-3 bx--col-lg-13">
+        <div className="bx--offset-lg-3 bs--col-lg-13">
           <p style={{ width: '100%', margin: '5vh 0' }}>
             {data ? (
-              <Summary data={data} />
+              <Member data={data} />
             ) : (
               <Wrapper>
                 <Loading className="loading" />
               </Wrapper>
             )}
           </p>
-          <Button onClick={() => setToMembers(true)}>Team Members</Button>
         </div>
       </div>
     </div>
   )
-
-  if (toTeamMembers) {
-    return <Redirect to={`/projects/detail/${proj_no}/team_members`} />
-  }
 
   return (
     <Content
@@ -64,7 +57,7 @@ const StoryContent = () => {
   )
 }
 
-const ProjectDetail = () => {
+const TeamMembers = () => {
   return (
     <>
       <Nav active="Projects" />
@@ -73,4 +66,4 @@ const ProjectDetail = () => {
   )
 }
 
-export default ProjectDetail
+export default TeamMembers
