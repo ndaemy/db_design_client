@@ -9,17 +9,27 @@ import {
   HeaderName,
   SideNav,
   SideNavItems,
+  SideNavMenu,
+  SideNavMenuItem,
   SideNavLink,
   SkipToContent,
 } from 'carbon-components-react/lib/components/UIShell'
 
-const Nav = ({ active }) => {
+const Nav = ({ active, subActive }) => {
   const dashboardProps = {
     isActive: active === 'Dashboard',
   }
 
   const employeesProps = {
     isActive: active === 'Employees',
+  }
+
+  const employeesAllProps = {
+    'aria-current': subActive === 'All' ? 'page' : '',
+  }
+
+  const employeesDevProps = {
+    'aria-current': subActive === 'Dev' ? 'page' : '',
   }
 
   const projectsProps = {
@@ -61,9 +71,17 @@ const Nav = ({ active }) => {
                   <SideNavLink href="/" {...dashboardProps}>
                     Dashboard
                   </SideNavLink>
-                  <SideNavLink href="/employees" {...employeesProps}>
-                    Employees
-                  </SideNavLink>
+                  <SideNavMenu title="Employees" {...employeesProps}>
+                    <SideNavMenuItem href="/employees" {...employeesAllProps}>
+                      All
+                    </SideNavMenuItem>
+                    <SideNavMenuItem
+                      href="/employees/dev"
+                      {...employeesDevProps}
+                    >
+                      Developers
+                    </SideNavMenuItem>
+                  </SideNavMenu>
                   <SideNavLink href="/projects" {...projectsProps}>
                     Projects
                   </SideNavLink>

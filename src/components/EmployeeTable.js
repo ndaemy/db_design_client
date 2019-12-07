@@ -10,7 +10,11 @@ const {
   TableHeader,
 } = DataTable
 
-const CustomTable = ({ data }) => {
+const CustomTable = ({ data, type }) => {
+  const titleProps = {
+    title: type === 'All' ? 'All Employees' : 'Dev Employees',
+  }
+
   // We would have a headers array like the following
   // `key` is the name of the field on the row object itself for the header
   // `header` will be the name you want rendered in the Table Header
@@ -21,7 +25,7 @@ const CustomTable = ({ data }) => {
     },
     {
       key: 'emp_name',
-      header: 'Project Name',
+      header: 'Employee Name',
     },
     {
       key: 'ssn',
@@ -41,6 +45,10 @@ const CustomTable = ({ data }) => {
     },
   ]
 
+  if (type === 'Dev') {
+    headers.push({ key: 'tech_grade', header: 'Tech Grade' })
+  }
+
   data.map(v => (v['id'] = v.emp_no))
 
   return (
@@ -48,7 +56,7 @@ const CustomTable = ({ data }) => {
       rows={data}
       headers={headers}
       render={({ rows, headers, getHeaderProps }) => (
-        <TableContainer title="Employees">
+        <TableContainer {...titleProps}>
           <Table>
             <TableHead>
               <TableRow>

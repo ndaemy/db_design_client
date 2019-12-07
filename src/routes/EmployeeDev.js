@@ -20,7 +20,7 @@ const StoryContent = () => {
 
   useEffect(() => {
     axios
-      .get('/api/employees')
+      .get('/api/employees/tech_grade')
       .then(res => setData(res.data))
       .catch(err => console.log(err))
   }, [])
@@ -31,7 +31,7 @@ const StoryContent = () => {
         <div className="bx--offset-lg-3 bx--col-lg-13">
           <p style={{ margin: '5vh 0' }}>
             {data ? (
-              <EmployeeTable data={data} type="All" />
+              <EmployeeTable data={data} type="Dev" />
             ) : (
               <Wrapper>
                 <Loading className="loading" />
@@ -57,7 +57,7 @@ const StoryContent = () => {
 const Employee = () => {
   return (
     <>
-      <Nav active="Employees" subActive="All" />
+      <Nav active="Employees" subActive="Dev" />
       <StoryContent />
     </>
   )
