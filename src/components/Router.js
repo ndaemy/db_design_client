@@ -10,6 +10,7 @@ import Project from '../routes/Project'
 import NewProject from '../routes/NewProject'
 import ProjectDetail from '../routes/ProjectDetail'
 import TeamMembers from '../routes/ProjectDetail/TeamMembers'
+import NewTeamMembers from '../routes/ProjectDetail/TeamMembers/NewTeamMember'
 import Client from '../routes/Client'
 import NewClient from '../routes/NewClient'
 
@@ -26,6 +27,11 @@ const LoggedInRoutes = () => (
       exact
       path="/projects/detail/:proj_no/team_members"
       component={TeamMembers}
+    />
+    <Route
+      exact
+      path="/projects/detail/:proj_no/team_members/new"
+      component={NewTeamMembers}
     />
     <Route exact path="/clients" component={Client} />
     <Route exact path="/clients/new" component={NewClient} />

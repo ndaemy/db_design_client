@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { Loading } from 'carbon-components-react'
+import { Button, Loading } from 'carbon-components-react'
 import { Content } from 'carbon-components-react/lib/components/UIShell'
 
 import Nav from '../../../components/Nav'
@@ -19,6 +20,7 @@ const Wrapper = styled.p`
 const StoryContent = () => {
   const { proj_no } = useParams()
   const [data, setData] = useState()
+  const [toNew, setToNew] = useState(false)
 
   useEffect(() => {
     axios
@@ -42,10 +44,15 @@ const StoryContent = () => {
               </Wrapper>
             )}
           </p>
+          <Button onClick={() => setToNew(true)}>New Team Member</Button>
         </div>
       </div>
     </div>
   )
+
+  if (toNew) {
+    return <Redirect to={`/projects/detail/${proj_no}/team_members/new`} />
+  }
 
   return (
     <Content
