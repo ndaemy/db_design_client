@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { DataTable } from 'carbon-components-react'
 const {
   TableContainer,
@@ -81,6 +82,11 @@ const CustomTable = ({ data, type }) => {
       )}
     />
   )
+}
+
+CustomTable.propTypes = {
+  data: PropTypes.array.isRequired,
+  type: PropTypes.string,
 }
 
 export default CustomTable

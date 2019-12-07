@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { DataTable } from 'carbon-components-react'
 const {
@@ -82,6 +83,10 @@ const CustomTable = ({ data }) => {
       )}
     />
   )
+}
+
+CustomTable.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default CustomTable
