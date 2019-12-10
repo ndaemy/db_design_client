@@ -38,5 +38,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://db-design-server.herokuapp.com/"
+  "proxy": "https://db-design-server.herokuapp.com/",
+  "homepage": "http://yuyaebean.github.io/db_design_client"
 }
